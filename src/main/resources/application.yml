@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/apiBD
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: ApiRestFul
+                
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/apiBD
+    username: postgres
+    password: 1234
+    pool:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    projectIngenieria: DEBUG
