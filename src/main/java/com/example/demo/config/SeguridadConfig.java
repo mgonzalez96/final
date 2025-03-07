@@ -22,7 +22,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 public class SeguridadConfig {
 
 	/*
-	 * método Bean para permitir el acceso sin logueo de los endpoints
+	 * Protege las rutas a los endpoints, valida a que endpoint se puede acceder
 	 */
 	@Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -39,7 +39,8 @@ public class SeguridadConfig {
     }
 
 	/*
-	 * método Bean para configurar los usuarios de logueo
+	 * Gestiona la autenticacion de usuarios, valida que la contraseña y usuario sean
+	 * los que estan especificados
 	 */
     @Bean
     MapReactiveUserDetailsService userDetailsService() {
@@ -53,8 +54,8 @@ public class SeguridadConfig {
     }
     
 	/*
-	 * método Bean para tomar el archivo .properties de
-	 * donde va a obtener los mensajes
+	 * Gestiona y obtiene mensajes en diferentes idiomas, 
+	 * por defecto va a buscar los archivos properties
 	 */
 	@Bean
 	MessageSource messageSource() {
@@ -64,7 +65,10 @@ public class SeguridadConfig {
 		return messageSource;
 	}
 //------------------------------------------------------------------///
-	
+	/**
+	 * Utilizado para determinar y establecer el idioma en un aplicación web, 
+	 * por defecto se dejó en Inglés
+	 */
 	@Bean
 	LocaleResolver localeResolver() {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
@@ -72,6 +76,10 @@ public class SeguridadConfig {
 		return resolver;
 	}
 
+	/**
+	 * Utilizado para cambiar el idioma en un aplicación web, utiliza un parametro en la URL
+	 * ?lan= es => significa que el idioma cambiara a español
+	 */
 	@Bean
 	LocaleChangeInterceptor localeChangeInterceptor() {
 		LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
