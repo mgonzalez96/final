@@ -27,13 +27,13 @@ public class SeguridadConfig {
 	@Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // 🔴 Desactiva CSRF para permitir POST, PUT y DELETE en Postman
+            .csrf(csrf -> csrf.disable()) // Desactiva CSRF para permitir POST, PUT y DELETE en Postman
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/v1/").permitAll()
                 .anyRequest().authenticated()
             )
-            .httpBasic(Customizer.withDefaults()) // 🔑 Habilita autenticación básica
-            .formLogin(Customizer.withDefaults()); // 📝 Habilita formulario de login
+            .httpBasic(Customizer.withDefaults()) // Habilita autenticación básica
+            .formLogin(Customizer.withDefaults()); // Habilita formulario de login
 
         return http.build();
     }

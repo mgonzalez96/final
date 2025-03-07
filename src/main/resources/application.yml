@@ -8,7 +8,7 @@ spring:
     password: 1234
     driver-class-name: org.postgresql.Driver
   application:
-    name: ApiRestFul
+    name: final
                 
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/apiBD
